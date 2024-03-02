@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return true;
   }
 
-  void _request() {
+  void _configureDio() {
     final refreshTokenInterceptor = TXRefreshTokenInterceptor(
         dio: dio,
         onRefreshToken: () async {
@@ -51,6 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
         onRefreshTokenFailed: (response) async {
           //refresh token failed
         });
+
+    //Add interceptor
     dio.interceptors.add(refreshTokenInterceptor);
   }
 
@@ -73,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _request,
+        onPressed: _configureDio,
         tooltip: 'Test button',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
